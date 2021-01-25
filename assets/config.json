@@ -1,0 +1,14 @@
+{
+    "port": "PORT_UTILISE",
+    "routeAPI": "/api",
+    "dbInfo": {
+        "host": "YOUR_HOST_ID FOR_BD",
+        "user": "USER_FOR_BD", 
+        "database": "DATABASE_NAME",
+        "password": "PASSWORD"
+    },
+    "jwt": {
+        "key": "API_KEY",
+        "expirationSecond": 600
+    }
+}

@@ -1,0 +1,13 @@
+body {
+    font-family: 'Cantora One', sans-serif;
+    background-color: #192a56;
+    color: white;
+}
+
+.alert-erreur-enter, .alert-erreur-leave-to {
+    opacity: 0;
+}
+
+.alert-erreur-enter-active, .alert-erreur-leave-active {
+    transition: 0.5s all;
+}

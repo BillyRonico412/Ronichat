@@ -1,0 +1,61 @@
+body {
+    font-family: 'Cantora One', sans-serif;
+    background-color: #192a56;
+    overflow-y: scroll;
+}
+
+.alert-erreur-enter, .alert-erreur-leave-to {
+    opacity: 0;
+}
+
+.alert-erreur-enter-active, .alert-erreur-leave-active {
+    transition: 0.5s all;
+}
+
+.bulle-msg {
+    max-width: 80%;
+    cursor: pointer;
+}
+
+.bulle-msg-body {
+    word-wrap: break-word;
+}
+
+.mode-enter, .mode-leave-to {
+    opacity: 0;
+}
+
+.mode-enter-active, .mode-leave-active {
+    transition: 0.2s all;
+}
+
+.message:hover{
+    background-color: rgb(245, 245, 245);
+}
+
+.list-amis {
+    cursor: pointer;
+    background-color: rgb(245, 245, 245);
+}
+
+.list-amis:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.date-bulle-enter, .date-bulle-leave-to {
+    opacity: 0;
+    font-size: 0;
+}
+
+.date-bulle-enter-active, .date-bulle-leave-active {
+    transition: 0.4s all;
+}
+
+.ecriture-enter, .ecriture-leave-to {
+    opacity: 0;
+    font-size: 0;
+}
+
+.ecriture-enter-active, .ecriture-leave-active {
+    transition: 0.4s all;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cantora+One&display=swap');
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/authentification/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <title>Authentification Ronichat</title>
+</head>
+
+<body>
+
+    <div class="container" id="app">
+
+        <h1 class="text-center my-2">Ronichat</h1>
+
+        <transition name="alert-erreur" mode="out-in">
+            <div class="alert alert-danger text-center" style="margin: 0 0.75rem 0 0.75rem;"
+                v-if="booleanErreurConnexion">
+                <small>{{ erreurConnexion }}</small>
+            </div>
+        </transition>
+
+        <form @submit.prevent="connexion">
+            <div>
+                <input type="text" name="username" class="form-control my-3 text-center" placeholder="Username"
+                    v-model="username">
+            </div>
+
+            <div>
+                <input type="password" name="motDePasse" class="form-control my-2 text-center"
+                    placeholder="Mot De Passe" v-model="motDePasse">
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary my-2 w-100 fw-bold">Connexion</button>
+            </div>
+        </form>
+
+        <div class="text-center">
+            <button class="btn btn-success my-2 w-100 fw-bold" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">Creer un compte</button>
+        </div>
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title text-dark text-center" id="staticBackdropLabel">Creer un compte</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <transition name="alert-erreur" mode="out-in">
+                            <div class="alert alert-danger text-center" style="margin: 0 0.75rem 0 0.75rem;"
+                                v-if="booleanErreurCreation">
+                                <small>{{ erreurCreation }}</small>
+                            </div>
+                        </transition>
+                        <div class="container-fluid">
+                            <div class="row my-4">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="usernameCreer">Username</span>
+                                        <input type="text"
+                                            :class="['form-control', 'text-center', controleUsername(usernameCreer) ? 'is-valid' : 'is-invalid']"
+                                            placeholder="BillyRonico" aria-label="Username"
+                                            aria-describedby="usernameCreer" v-model="usernameCreer">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-4">
+                                <div class="col-md mb-md-0 mb-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="mdpCreer">Mot De Passe</span>
+                                        <input type="password"
+                                            :class="['form-control', 'text-center', controleMdp(mdpCreer) ? 'is-valid' : 'is-invalid']"
+                                            placeholder="Billy201" aria-label="mdp" aria-describedby="mdpCreer"
+                                            v-model="mdpCreer">
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="confirmationCreer">Confirmation</span>
+                                        <input type="password"
+                                            :class="['form-control', 'text-center', mdpCreer == mdpConfirmation ? 'is-valid' : 'is-invalid']"
+                                            placeholder="Billy201" aria-label="confirmation"
+                                            aria-describedby="confirmationCreer" v-model="mdpConfirmation">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger px-4 fs-6" data-bs-dismiss="modal"
+                            ref="closeModalButton">Fermer</button>
+                        <button type="button" class="btn btn-success px-4 fs-6" @click="creerCompte">Creer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="./static/authentification/main.js"></script>
+
+</body>
+
+</html>

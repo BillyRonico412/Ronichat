@@ -1,0 +1,5 @@
+-> Le système de connexion se base sur les JsonWebToken
+A chaque chargement de la page utilisation, on doit refresh le JsonWebToken
+Et mettre un refresh manuel en JS tout les 8 minutes
+
+-> Quand on essaie d'acceder à la page de connexion via le static, on ecrase le token present
